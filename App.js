@@ -8,6 +8,7 @@ import Home from './Home.js';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import UselessTextInput from './login.js';
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
@@ -50,6 +51,18 @@ export default function App() {
             ),
           }}
         />
+
+        <Tab.Screen
+          name='Log In'
+          component={UselessTextInput}
+          options={{
+            tabBarLabel: 'Log In',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name='watch' color={color} size={26} />
+            ),
+          }}
+          />
+
       </Tab.Navigator>
     </NavigationContainer>
   );
