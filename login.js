@@ -1,41 +1,52 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
 import {View} from 'react-native';
+import { useLinkProps } from "@react-navigation/native";
+import { Alert } from "react-native";
 
-const UselessTextInput = () => {
-  const [phoneNumber, onChangeText] = React.useState(null);
-  const [oneTimePassword, onChangeNumber] = React.useState(null);
+export default function UselessTextInput(props) {
+  const [phoneNumber1, onChangeText] = React.useState(null);
+  const [oneTimePassword1, onChangeNumber] = React.useState(null);
 
   return (
     <SafeAreaView>
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
-        value={phoneNumber}
+        value={phoneNumber1}
         placeholder="Phone Number"
         keyboardType="numeric"
       />
        <Button
       title="Send OTP"
-      onPress={() => fetch('https://dev.stedi.me/twofactorlogin/'+phoneNumber, {method: "post"})}
+      onPress={() => fetch('https://dev.stedi.me/twofactorlogin/'+phoneNumber1, {method: "post"})}
       />
 
       <TextInput
         style={styles.input}
         onChangeText={onChangeNumber}
-        value={oneTimePassword}
+        value={oneTimePassword1}
         placeholder="One Time Code"
         keyboardType="numeric"
       />
       <Button
       title="Log In"
-      onPress={() => fetch('https://dev.stedi.me/twofactorlogin', {method: "post"})}
+      onPress={() => fetch('https://dev.stedi.me/twofactorlogin', {
+        method: "POST", 
+        body: JSON.stringify({
+          phoneNumber: phoneNumber1, 
+          oneTimePassword: oneTimePassword1}),
+        })
+        .then(() => {
+          props.setUserLoggedIn(true)
+        })
+      }
       />
-      
+
 
     </SafeAreaView>
-  );
-};
+  )
+}
 
 
 const styles = StyleSheet.create({
@@ -46,32 +57,3 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
-function getCode(){
-    setusername();
-    $.ajax({
-        type: 'POST',
-        url: 'https://dev.stedi.me/twofactorlogin/'+phoneNumber,
-        data: JSON.stringify({userName, password}),
-        //success: function(data) {
-        //    window.location.href = "/timer.html#"+data;//add the token to the url
-        //},
-        contentType: "application/text",
-        dataType: 'text'
-    });
-
-}
-
-function twofactorlogin(){
-    setuserpassword();
-    setusername();
-    $.ajax({
-        type: 'POST',
-        url: 'https://dev.stedi.me/twofactorlogin' ,
-        data: JSON.stringify({phoneNumber: userName, oneTimePassword: password}),
-        success: function(data) {
-            window.location.href = "/timer.html#"+data;//add the token to the url
-        }
-    })}
-
-export default UselessTextInput;
