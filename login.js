@@ -37,8 +37,10 @@ export default function UselessTextInput(props) {
           phoneNumber: phoneNumber1, 
           oneTimePassword: oneTimePassword1}),
         })
-        .then(() => {
+        .then((response) => {
+          if(response.status==200)
           props.setUserLoggedIn(true)
+          else(Alert.alert("Unable to Login"))
         })
       }
       />

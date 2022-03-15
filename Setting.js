@@ -8,7 +8,6 @@ import UselessTextInput from './login.js';
 function Setting(UselessTextInput) {
     return(
       <View>
-      UselessTextInput
       <Button
       title="Log In"
       onPress={() => twofactorlogin}
