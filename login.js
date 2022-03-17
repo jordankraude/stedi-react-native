@@ -38,12 +38,25 @@ export default function UselessTextInput(props) {
           oneTimePassword: oneTimePassword1}),
         })
         .then((response) => {
-          if(response.status==200)
-          props.setUserLoggedIn(true)
-          else(Alert.alert("Unable to Login"))
+          if(response.status==200){
+          const token = response.text()
+          return token}
+          else{(Alert.alert("Unable to Login"))}
         })
-      }
+        .then((token) => {fetch('https://dev.stedi.me/validate/'+token,
+        {method: 'GET'})
+        .then((response) => {
+          if(response.status==200){
+            const email = response.text()
+            props.setUserEmail(email)
+            props.setUserLoggedIn(true)}
+          else{(Alert.alert("Unable to Login"))}
+          
+          }
+        )
+        })}
       />
+
 
 
     </SafeAreaView>
