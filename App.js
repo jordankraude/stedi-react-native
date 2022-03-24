@@ -31,7 +31,7 @@ export default function App() {
           name='Home'
           children={()=><Home userEmail={userEmail}/>}
           options={{
-            tabBarLabel: {userEmail},
+            tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name='home' color={color} size={26} />
             ),

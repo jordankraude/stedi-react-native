@@ -10,10 +10,6 @@ import UselessTextInput from './login.js';
 function Setting(UselessTextInput) {
     return(
       <View>
-      <Button
-      title={userEmail}
-      onPress={() => twofactorlogin}
-    />
       </View>
     )
   }

@@ -51,7 +51,6 @@ export default function UselessTextInput(props) {
             props.setUserEmail(email)
             props.setUserLoggedIn(true)}
           else{(Alert.alert("Unable to Login"))}
-          
           }
         )
         })}
