@@ -14,9 +14,8 @@ import UselessTextInput from './login.js';
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState("")
+  const [userEmail2, setUserEmail] = useState("")
 
   if (userLoggedIn){
 
@@ -29,7 +28,7 @@ export default function App() {
       >
         <Tab.Screen
           name='Home'
-          children={()=><Home userEmail={userEmail}/>}
+          children={()=><Home userEmail={userEmail2}/>}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
