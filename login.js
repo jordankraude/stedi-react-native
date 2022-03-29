@@ -47,9 +47,8 @@ export default function UselessTextInput(props) {
         {method: 'GET'})
         .then((response) => {
           if(response.status==200){
-            const email = response.text()
-            props.setUserEmail(email)
-            props.setUserLoggedIn(true)}
+            response.text().then(function (email) {props.setUserEmail(email)
+              props.setUserLoggedIn(true)})}
           else{(Alert.alert("Unable to Login"))}
           }
         )
